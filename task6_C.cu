@@ -10,7 +10,7 @@
 
 
 
-// функция активации. __global__ функции не могут быть членом класса, так что вынесла
+// функция активации
 __global__ void nn_Sigmoid(float* arr, int size)
 {
 	int id = threadIdx.x;
@@ -19,7 +19,7 @@ __global__ void nn_Sigmoid(float* arr, int size)
 }
 
 
-// класс для линейного слоя и сигмоиды
+
 class NN
 {
 private:
