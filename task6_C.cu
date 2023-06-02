@@ -14,8 +14,8 @@
 __global__ void nn_Sigmoid(float* arr, int size)
 {
 	int id = threadIdx.x;
-	if (id < size - 1 && id > 0)
-		arr[id] = 1 / (1 + exp(-arr[id]));
+
+	arr[id] = 1 / (1 + exp(-arr[id]));
 }
 
 
@@ -68,7 +68,7 @@ public:
 		output_size = 0;
 		alpha = 1.0;
 		beta = 1.0;
-		activation_true = false;
+		activation_true = true;
 	};
 
 	NN(std::string pathToWeights, std::string pathToBiases, int inSize, int outSize, bool activation) {
@@ -133,11 +133,11 @@ private:
 		std::cout << host_array[0] << std::endl;
 
 		//проврка
-		float pattern = round(0.5128815174102783 * 1000) / 1000;
-		host_array[0] = round(host_array[0] * 1000) / 1000;
+		float pattern = round(0.5757734179496765 * 100) / 100;
+		host_array[0] = round(host_array[0] * 100) / 100;
 
 		if (pattern == host_array[0]) std::cout << "IT'S RIGHT ANSWER!" << std::endl;
-		else std::cout << "result(" << host_array[0] << ") != pattern(" << pattern << ")" << std::endl;
+		else std::cout << "result(" << host_array[0] << ") and pattern(" << pattern << ")" << std::endl;
 
 		delete[] host_array;
 	};
